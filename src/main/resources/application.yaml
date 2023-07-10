@@ -1,0 +1,22 @@
+#
+#
+## Database config
+#spring:
+#  application:
+#    name: boot-demo
+#
+#  cloud:
+#    aws:
+#      ses:
+#        region:
+#          static: us-east-2
+#      stack:
+#        auto: false
+#      region:
+#        static: us-east-1
+#      credentials:
+#        useDefaultAwsCredentialsChain: true
+#  #      profile-name: default
+#  #      access-key:
+#  #      secret-key:
+#
