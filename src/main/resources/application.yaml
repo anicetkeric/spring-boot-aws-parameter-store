@@ -1,22 +1,18 @@
-#
-#
-## Database config
-#spring:
-#  application:
-#    name: boot-demo
-#
-#  cloud:
-#    aws:
-#      ses:
-#        region:
-#          static: us-east-2
-#      stack:
-#        auto: false
-#      region:
-#        static: us-east-1
-#      credentials:
-#        useDefaultAwsCredentialsChain: true
-#  #      profile-name: default
-#  #      access-key:
-#  #      secret-key:
-#
+spring:
+  profiles:
+    active: dev
+  application:
+    name: my-demo-boot
+  cloud:
+    aws:
+      credentials:
+        access-key: <your-access-key>
+        secret-key: <your-secret-key>
+        profile:
+          name: default
+      region:
+        static: us-east-2
+  config:
+    import:
+      # - aws-parameterstore:/config/${spring.application.name}_${spring.profiles.active}
+      - aws-parameterstore:/config/my-demo-boot_default/
