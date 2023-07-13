@@ -1,8 +1,9 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   application:
     name: my-demo-boot
+  # AWS parameter store configuration
   cloud:
     aws:
       credentials:
@@ -14,5 +15,18 @@ spring:
         static: us-east-2
   config:
     import:
-      # - aws-parameterstore:/config/${spring.application.name}_${spring.profiles.active}
-      - aws-parameterstore:/config/my-demo-boot_default/
+      - aws-parameterstore:/config/application_${spring.profiles.active}/
+
+# actuator configuration
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: 'health, env'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    env:
+      enabled: true
